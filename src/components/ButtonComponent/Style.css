@@ -1,4 +1,4 @@
-button {
+.button-cpn {
     border: none;
     border-radius: 6px;
     font-size: 20px;
@@ -15,6 +15,6 @@ button {
     white-space: nowrap;
 }
 
-button:focus {
+.button-cpn:focus {
     border: none;
 }

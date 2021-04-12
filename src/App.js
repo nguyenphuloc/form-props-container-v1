@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import FormContainer from './container/FormContainer/FormContainer';
+import FormLogIn from './container/FormLogIn/index';
+import FormRegister from './container/FormRegister/index';
 
 function App() {
   return (
     <div className="App">
-      <FormContainer />
+      <FormRegister />
+      <FormLogIn />
     </div>
   );
 }

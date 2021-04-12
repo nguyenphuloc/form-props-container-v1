@@ -1,4 +1,4 @@
-input {
+.input-cpn {
     width: 330px;
     border-radius: 6px;
     font-size: 17px;
@@ -6,7 +6,8 @@ input {
     border: 1px solid #dddfe2;
     outline: deepskyblue;
     margin-top: 10px;
+    background: #f5f6f7;
 }
-input:focus{
+.input-cpn:focus{
     border: 1px solid #3385ff;
 }
