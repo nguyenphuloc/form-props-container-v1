@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./style.css";
 import InputComponent from "../../components/InputComponent/Index";
 import ButtonComponent from "../../components/ButtonComponent/Index";
@@ -41,17 +41,41 @@ const year = [
 ];
 
 const FormRegister = () => {
+    const lastNameRef = useRef("");
+    const firstNameRef = useRef("");
+    const phoneEmailRef = useRef("");
+
     const handleOnChangeFemale = () => {
-
+        
     }
 
-    const handleDay = (data) => {
-        day.map(data => {
-            <option>{data.day}</option>
-        })
+    const handleOnChangeLastname = (event) => {
+        lastNameRef.current = event.target.value;
     }
-    
 
+    const handleOnChangeFirstName = (event) => {
+        firstNameRef.current = event.target.value;
+    }
+
+    const handleOnChangePhoneEmail =(event) => {
+        phoneEmailRef.current = event.target.value;
+    }
+
+    const handleRegister = (props) => {
+        let message;
+        if(!lastNameRef.current && !firstNameRef.current && !phoneEmailRef.current) {
+            message ="Vui lòng nhập các trường";
+        } else if(!lastNameRef.current) {
+            message = "Họ không hợp lệ";
+        } else if(!firstNameRef.current) {
+            message = "Tên không hợp lệ";
+        } else if(!phoneEmailRef.current) {
+            message = "Số điện thoại hoặc email không hợp lệ";
+        } else {
+            message = "Đăng ký thành công";
+        }
+        alert(message);
+    }
     return(
         <div className="register-container">
             <div className="register-title">
@@ -67,15 +91,18 @@ const FormRegister = () => {
                     <InputComponent 
                         className="last-name"
                         placeholder="Họ"
+                        handleOnChange={handleOnChangeLastname}
                     />
                     <InputComponent 
                         className="first-name"
                         placeholder="Tên"
+                        handleOnChange={handleOnChangeFirstName}
                     />
                 </div>
                 <InputComponent 
                     className="phone-email"
                     placeholder="Số di động hoặc email"
+                    handleOnChange={handleOnChangePhoneEmail}
                 />
                 <InputComponent 
                     className="new-password"
@@ -163,7 +190,9 @@ const FormRegister = () => {
                 <div className="register-div">
                     <ButtonComponent 
                         className="register-btn"
-                        title="Đăng ký"/>
+                        title="Đăng ký"
+                        onClick={handleRegister}
+                    />
                 </div>
             </form>
         </div>
